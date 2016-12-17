@@ -1,0 +1,16 @@
+.registration-link {
+    color: rgb(90, 202, 155);
+    text-decoration: none;
+    margin: 0 auto;
+}
+.site-header {
+    background-color: rgb(92, 199, 178);
+    text-align: center;
+    padding: 2px;
+    color: #fff;
+}
+
+.site-content {
+    margin: 0 auto;
+    width: 80%;
+}

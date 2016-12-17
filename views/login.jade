@@ -1,0 +1,20 @@
+doctype html
+html(lang='en')
+  head
+    title Login
+    link(rel='stylesheet', href='styles/base.css')
+    link(rel='stylesheet', href='styles/style.css')
+  body
+    header.site-header
+      h1.site-header__logo News
+    .site-content
+      h1.page-title Login
+      .login-form
+        form#login(action='/login', method='post')
+          .input-wrapper
+            input#username.input(type='text', name='username', placeholder='Your username')
+          .input-wrapper
+            input#password.input(type='password', name='password', placeholder='Password')
+          input.button(type='submit', value='Login')
+      p
+        a.registration-link(href='/registration') Registration
