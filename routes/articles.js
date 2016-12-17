@@ -10,6 +10,7 @@ router.get('/last', function(req, res) {
 		return res.status(200).send(articles);
 	})
 	.catch((error) => {
+		console.log(error);
 		return res.status(500).send();
 	});
 });
@@ -32,13 +33,14 @@ router.post('/', upload.single('image'), function(req, res) {
         title: req.body.title,
         description: req.body.description,
         link: req.body.link,
-        imageUri: req.file.filename
+        imageHash: req.file.filename
     };
 
 	ArticleController.addArticle(article).then(() => {
 		return res.status(201).send();
 	})
 	.catch((error) => {
+		console.log(error);
 		return res.status(500).send();
 	});
 });
@@ -53,6 +55,7 @@ router.delete('/:id', function(req, res) {
 		return res.status(200).send();
 	})
 	.catch((error) => {
+		console.log(error);
 		return res.status(500).send();
 	});
 });

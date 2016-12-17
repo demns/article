@@ -9,7 +9,7 @@ var articleSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    imageUri: String
+    imageHash: String
 });
 
 var Article = mongoose.model('Article', articleSchema);

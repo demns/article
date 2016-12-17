@@ -12,6 +12,7 @@ router.post('/create', function(req, res) {
     	return res.status(201).redirect('/articles/new');
     })
     .catch((error) => {
+        console.log(error);
     	return res.status(500).send();
     });
 

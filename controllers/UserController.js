@@ -9,6 +9,7 @@ module.exports.createUser = function(user) {
     return new Promise(function(resolve, reject) {
     	User.createUser(newUser, function(err, user) {
     		if (err) {
+                console.log(err);
     			reject(err);
     		} 
     		resolve(user);

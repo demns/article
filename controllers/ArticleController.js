@@ -8,6 +8,7 @@ module.exports.getLastArticles = function(){
         })
         .exec(function(err, articles) {
             if (err) {
+                console.log(err);
             	reject(err);
             }
             resolve(articles)
@@ -21,12 +22,13 @@ module.exports.addArticle = function(article) {
         description: article.description,
         title: article.title,
         link: article.link,
-        imageUri: article.imageUri
+        imageHash: article.imageHash
     });
 
     return new Promise(function(resolve, reject) {
     	newArticle.save(function(err) {
     		if (err) {
+                console.log(err);
     			reject(err);
     		}
     		resolve();
@@ -40,6 +42,7 @@ module.exports.deleteArticle = function(id) {
 		Article.findById(id, function(err, article) {
         	return article.remove(function(err) {
         		if (err) {
+                    console.log(err);
         			reject(err);
         		}
         		resolve();
