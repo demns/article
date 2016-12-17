@@ -5,9 +5,9 @@ var upload = multer({ dest: './public/uploads/' });
 
 var ArticleController = require('../controllers/ArticleController');
 
-router.get('/last', function(req, res) {
+router.get('/', function(req, res) {
 	ArticleController.getLastArticles().then((articles) => {
-		return res.status(200).send(articles);
+		return res.status(200).render('articles', { articles: articles });
 	})
 	.catch((error) => {
 		console.log(error);
@@ -37,7 +37,7 @@ router.post('/', upload.single('image'), function(req, res) {
     };
 
 	ArticleController.addArticle(article).then(() => {
-		return res.status(201).send();
+		return res.status(201).redirect('articles/');
 	})
 	.catch((error) => {
 		console.log(error);

@@ -12,7 +12,7 @@ html(lang='en')
       .registration-form
         form#registration(action='/users/create', method='post')
           .input-wrapper
-            input#username.input(type='text', name='username', placeholder='Your username')
+            input#username.input(type='text', name='username', required='', placeholder='Your username')
           .input-wrapper
-            input#password.input(type='password', name='password', placeholder='Password')
+            input#password.input(type='password', name='password', required='', placeholder='Password')
           input.button(type='submit', value='Create')
