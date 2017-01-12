@@ -1,4 +1,5 @@
 var express = require('express');
+var path = require('path');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
@@ -19,9 +20,9 @@ mongoose.connect(`mongodb://${config.mongo.user}:${config.mongo.password}@ds1193
     console.log('Successfully connect to MongoDB');
 } );
 
-app.set('view engine', 'jade');
+app.set('view engine', 'jsx');
 app.set('views', __dirname + '/views');
-
+app.engine('jsx', require('express-react-views').createEngine());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,9 +39,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/articles', articleRoutes);
-app.use('/users', userRoutes);
-app.use('/', loginRoutes);
+app.get('/', require('./routes/articles').index);
 
 app.use(function(req, res, next) {
 	var err = new Error('Not found');
