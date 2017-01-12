@@ -25,4 +25,4 @@ router.get('/registration', function(req, res) {
     res.render('registration', {});
 });
 
-module.exports = router;
+module.exports.index = router;

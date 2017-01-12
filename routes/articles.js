@@ -5,7 +5,6 @@ var upload = multer({ dest: './public/uploads/' });
 
 var ArticleController = require('../controllers/ArticleController');
 
-console.log('asda');
 router.get('/', function(req, res) {
 	ArticleController.getLastArticles().then((articles) => {
 		return res.status(200).render('articles', { articles: articles });

@@ -39,7 +39,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/', require('./routes/articles').index);
+app.use('/articles', require('./routes/articles').index);
+app.use('/users', require('./routes/users').index);
+app.use('/', require('./routes/login').index);
 
 app.use(function(req, res, next) {
 	var err = new Error('Not found');

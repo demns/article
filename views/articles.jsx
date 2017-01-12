@@ -10,8 +10,8 @@ class Articles extends React.Component {
 			Hello {this.props.name}
 				<h2 class="page-title">Last article</h2>
 				<ul class="article-list">
-				{this.props.articles.map((article) => {
-					return <li class="article-list__item">
+				{this.props.articles.map((article, index) => {
+					return <li class="article-list__item" key={index}>
 							<h2 class="article-list__item__title">{article.title}</h2>
 							 <p class="article-list__item__description">{article.description}</p>
             				<a class="article-list__item__link" href={article.link}>Read more...</a>
