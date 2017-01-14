@@ -24,6 +24,7 @@
     "babel": "^6.5.2",
     "babel-cli": "^6.18.0",
     "babel-preset-react": "^6.16.0",
+    "cors": "^2.8.1",
     "express-react-views": "^0.10.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"

@@ -7,7 +7,7 @@ var ArticleController = require('../controllers/ArticleController');
 
 router.get('/', function(req, res) {
 	ArticleController.getLastArticles().then((articles) => {
-		return res.status(200).render('articles', { articles: articles });
+		return res.status(200).json(articles);
 	})
 	.catch((error) => {
 		console.log(error);
@@ -17,7 +17,7 @@ router.get('/', function(req, res) {
 
 router.get('/new', function(req, res) {
 	if (!req.user) {
-        return res.status(302).redirect('/login');
+        return res.status(302).send();
     }
 
 	res.render('new-article', {});
@@ -37,7 +37,7 @@ router.post('/', upload.single('image'), function(req, res) {
     };
 
 	ArticleController.addArticle(article).then(() => {
-		return res.status(201).redirect('articles/');
+		return res.status(201).send();
 	})
 	.catch((error) => {
 		console.log(error);

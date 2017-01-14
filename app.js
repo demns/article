@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var config = require('./configs/config.json');
 var app = express();
+var cors = require('cors')
 
 var articleRoutes = require('./routes/articles');
 var userRoutes = require('./routes/users');
@@ -20,10 +21,7 @@ mongoose.connect(`mongodb://${config.mongo.user}:${config.mongo.password}@ds1193
     console.log('Successfully connect to MongoDB');
 } );
 
-app.set('view engine', 'jsx');
-app.set('views', __dirname + '/views');
-app.engine('jsx', require('express-react-views').createEngine());
-
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -51,10 +49,7 @@ app.use(function(req, res, next) {
 
 app.use(function(err, req, res, next){
 	res.status(res.status >= 100 && res.status < 600 ? err.code : 500);
-	res.render('error', {
-		message: err.message,
-		error: {}
-	});
+	res.send();
 });
 
 app.listen(config.port, function() {

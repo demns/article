@@ -9,7 +9,7 @@ router.post('/create', function(req, res) {
     };
 
     UserController.createUser(newUser).then((user) => {
-    	return res.status(201).redirect('/articles/new');
+        return res.status(201).send();
     })
     .catch((error) => {
         console.log(error);
