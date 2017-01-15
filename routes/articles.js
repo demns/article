@@ -6,6 +6,9 @@ var upload = multer({ dest: './public/uploads/' });
 var ArticleController = require('../controllers/ArticleController');
 
 router.get('/', function(req, res) {
+	res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
 	ArticleController.getLastArticles().then((articles) => {
 		return res.status(200).json(articles);
 	})

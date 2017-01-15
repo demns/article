@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var config = require('./configs/config.json');
 var app = express();
-var cors = require('cors')
+var cors = require('cors');
 
 var articleRoutes = require('./routes/articles');
 var userRoutes = require('./routes/users');
@@ -21,7 +21,9 @@ mongoose.connect(`mongodb://${config.mongo.user}:${config.mongo.password}@ds1193
     console.log('Successfully connect to MongoDB');
 } );
 
-app.use(cors());
+app.use(cors( {
+	credentials: true
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
