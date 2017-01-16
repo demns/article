@@ -36,7 +36,7 @@ router.post('/', upload.single('image'), function(req, res) {
         title: req.body.title,
         description: req.body.description,
         link: req.body.link,
-        imageHash: req.file.filename
+        imageHash: req.file && req.file.filename
     };
 
 	ArticleController.addArticle(article).then(() => {
